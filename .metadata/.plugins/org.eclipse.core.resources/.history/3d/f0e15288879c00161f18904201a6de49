@@ -1,0 +1,26 @@
+package mvc.controller;
+
+import java.io.IOException;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import mvc.model.Usuario;
+import mvc.model.UsuarioDAO;
+
+@Controller
+public class LoginController {
+    @RequestMapping("registro")
+    public String registro() {
+        return "formulario-registro";
+    }
+    
+    @RequestMapping(value = "efetuaRegistro", method = RequestMethod.POST)
+    public String upload(Usuario usuario) throws IOException {
+    	UsuarioDAO dao = new UsuarioDAO();
+    	dao.adiciona(usuario);
+       return "redirect:loginForm";
+   }   
+}

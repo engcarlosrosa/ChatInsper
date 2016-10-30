@@ -1,0 +1,75 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.HttpClients;
+import org.apache.http.message.BasicNameValuePair;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
+
+public class Main {
+	public static void main(String[] args) throws ClientProtocolException, IOException {
+		// TODO Auto-generated method stub
+	
+	
+    HttpClient client = HttpClients.createDefault();
+    HttpGet request = new HttpGet("http://localhost:8080/handout11/lista");
+    HttpPost request2 = new HttpPost("http://localhost:8080/handout11/maiuscula");
+	
+    List<NameValuePair> urlParameters = new ArrayList<NameValuePair>();
+    urlParameters.add(new BasicNameValuePair("texto", "testando"));
+	
+    request2.setEntity(new UrlEncodedFormEntity(urlParameters));
+
+    HttpResponse resp = client.execute(request);
+
+    if( resp.getStatusLine().getStatusCode() == 200) {
+        InputStreamReader stream = new InputStreamReader(resp.getEntity().getContent());
+        BufferedReader br = new BufferedReader(stream);
+        String line;
+        while ( (line = br.readLine()) != null ) {
+            System.out.println(line);
+        }
+    }
+    
+    String url = "http://finance.yahoo.com/webservice/v1/symbols/allcurrencies/quote";
+    HttpGet request3 = new HttpGet(url);
+    HttpResponse resp3 = client.execute(request3);
+	
+    HttpEntity entity = resp3.getEntity();
+    DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+    
+    Document doc = null;
+    try {
+        DocumentBuilder builder = factory.newDocumentBuilder();
+        doc = builder.parse(entity.getContent());
+    } catch (UnsupportedOperationException|SAXException|ParserConfigurationException e){
+        e.printStackTrace();
+    }
+     
+	NodeList nList = doc.getElementsByTagName("resource");
+	for (int temp = 0; temp < nList.getLength(); temp++) { 
+        Element eElement = (Element) nList.item(temp);
+        NodeList node = eElement.getElementsByTagName("field");
+        System.out.print("Nome: " + node.item(0).getTextContent());
+        System.out.println("  Preço: " + node.item(1).getTextContent());
+	}
+  }
+}
+

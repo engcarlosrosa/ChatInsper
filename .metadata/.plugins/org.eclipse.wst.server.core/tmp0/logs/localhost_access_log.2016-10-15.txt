@@ -1,0 +1,12 @@
+127.0.0.1 - - [15/Oct/2016:22:38:45 -0300] "GET / HTTP/1.1" 404 1000
+0:0:0:0:0:0:0:1 - - [15/Oct/2016:22:40:01 -0300] "GET /handout11/testeLista.jsp?format=xml HTTP/1.1" 200 482
+0:0:0:0:0:0:0:1 - - [15/Oct/2016:22:40:01 -0300] "GET /favicon.ico HTTP/1.1" 404 1022
+127.0.0.1 - - [15/Oct/2016:22:40:12 -0300] "GET /handout11/testeLista.jsp?format=xml HTTP/1.1" 200 482
+0:0:0:0:0:0:0:1 - - [15/Oct/2016:22:49:45 -0300] "GET /handout11/testeLis HTTP/1.1" 404 1036
+127.0.0.1 - - [15/Oct/2016:22:53:06 -0300] "GET /handout11/testeLis HTTP/1.1" 404 1036
+0:0:0:0:0:0:0:1 - - [15/Oct/2016:23:05:35 -0300] "GET /handout11/maiuscula HTTP/1.1" 405 1114
+127.0.0.1 - - [15/Oct/2016:23:15:27 -0300] "POST /handout11/maiuscula HTTP/1.1" 200 10
+127.0.0.1 - - [15/Oct/2016:23:16:01 -0300] "POST /handout11/maiuscula HTTP/1.1" 200 17
+127.0.0.1 - - [15/Oct/2016:23:45:05 -0300] "POST /handout11/maiuscula HTTP/1.1" 200 17
+127.0.0.1 - - [15/Oct/2016:23:45:16 -0300] "POST /handout11/maiuscula HTTP/1.1" 200 17
+127.0.0.1 - - [15/Oct/2016:23:45:43 -0300] "GET /handout11/testeLis HTTP/1.1" 404 1036

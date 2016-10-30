@@ -1,0 +1,14 @@
+package mvc.model;
+import org.springframework.web.multipart.MultipartFile;
+
+public class Usuario {	
+	private String login;
+	private String senha;
+	private MultipartFile foto;
+	public String getLogin() {
+		return login;
+	}
+	public void setLogin(String login) {
+		this.login = login;
+	}
+}

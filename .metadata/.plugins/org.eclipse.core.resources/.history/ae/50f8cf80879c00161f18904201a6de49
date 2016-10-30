@@ -1,0 +1,16 @@
+package mvc.controller;
+
+@Controller
+public class LoginController {
+    @RequestMapping("registro")
+    public String registro() {
+        return "formulario-registro";
+    }
+    
+    @RequestMapping(value = "efetuaRegistro", method = RequestMethod.POST)
+    public String upload(Usuario usuario) throws IOException {
+    	UsuarioDAO dao = new UsuarioDAO();
+    	dao.adiciona(usuario);
+       return "redirect:loginForm";
+   }   
+}

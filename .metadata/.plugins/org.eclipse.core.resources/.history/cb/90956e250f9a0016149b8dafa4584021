@@ -1,0 +1,21 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <title>Central de Tarefas</title>
+    <link rel="stylesheet" href="styles/styleClass.css" />
+</head>
+<body>
+<section action="criaTarefa" method="get">
+   <input type="button" value="Criar Tarefa">
+</section>
+<section cssStyle="color:red">
+    bbb
+</section>
+<section>
+   ccc
+</section>
+</body>
+</html>
